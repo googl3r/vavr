@@ -21,19 +21,13 @@ package io.vavr;
 import io.vavr.collection.Iterator;
 
 /**
- * {@code Value} is the base type of all values in Vavr. It offers a single method, {@link #iterator()},
- * that returns a rich {@link io.vavr.collection.Iterator}.
+ * {@code Value} is the root type of the Vavr hierarchy, except for functions and tuples.
+ * It overrides {@link Iterable#iterator()} such that {@link io.vavr.collection.Iterator}
+ * is returned.
  * <p>
- * In a functional setting, values play an integral role. Programs can be seen as transformations of values.
- * A pure application just has an input and produces an output. However, a meaningful application will
- * mutate the outer world, like writing to logs or to database tables.
- * <p>
- * Vavr's implementations of {@code Value} help us to focus on computations resp. business logic. Values
- * encode aspects of everyday programming by encapsulating the program state for further transformation.
- * This kind of high-level programming increases the overall readability of our programs, given that we
- * know the basic vocabulary of available types and transformations.
- * <p>
- * {@code Value}s are wrappers that might be stateful, like {@link io.vavr.concurrent.Future}.
+ * {@code Value} intentionally has no {@code stream()} method, we align to the
+ * <a href="http://mail.openjdk.java.net/pipermail/lambda-libs-spec-experts/2013-June/001910.html">design decision</a>
+ * of the Java Expert Group.
  *
  * @param <T> Element type
  */
